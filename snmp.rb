@@ -1,5 +1,4 @@
 require 'snmp'
-require 'pry'
 
 SNMP::Manager.open(host: 'andromeda.local') do |manager|
   manager.walk("ipNetToMediaPhysAddress") do |row|
