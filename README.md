@@ -58,3 +58,11 @@ Requirements
 
 * Ruby 1.9.x (This app comes with an rvmrc for 1.9.3-p0)
 * Airport Extreme/Express router that has SNMP Enabled
+
+BONUS ROUND!
+------------
+
+Want to teach hubot how to talk to snitch? Load the snitch.coffee module into
+[Hubot](https://github.com/github/hubot). Make sure you also load the
+github-credentials.coffee module from github-scripts, because it matches
+names from there.
