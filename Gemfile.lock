@@ -1,0 +1,10 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    snmp (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  snmp (~> 1.1.0)
