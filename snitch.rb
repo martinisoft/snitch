@@ -26,7 +26,7 @@ class Snitch
   def connected_clients
     client_list.map do |client|
       config[client]
-    end.reject { |c| c.nil? }
+    end.compact
   end
 
   private
