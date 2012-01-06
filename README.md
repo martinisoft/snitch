@@ -23,11 +23,18 @@ How do I shot web?
 $ bundle
 ```
 
-Edit the constant at the top of the snmp.rb file to match the
-Bonjour Name/IP if your AP Extreme/Express
+Make a copy of snitch.example.yml and rename it
 
 ```
-ROUTER_NAME='andromeda.local'
+cp snitch.example.yml snitch.yml
+```
+
+Edit the snitch.yml, update router_name and list out the MAC address and
+github/username of each user you want to track.
+
+```
+router_name: andromeda.local
+"23:98:72:27:2E:88": martinisoft
 ```
 
 _Make sure SNMP is enabled on your AP Extreme/Express_
@@ -35,14 +42,16 @@ _Make sure SNMP is enabled on your AP Extreme/Express_
 Boot the server
 
 ```
-ruby snmp.rb
+rackup
 ```
 
 Curl away!
 
 ```
-curl http://localhost:8888/who
+curl http://localhost:9292/who
 ```
+
+It should return a comma-delimited list of usernames, compatible with [play](https://github.com/holman/play)
 
 Requirements
 ------------
