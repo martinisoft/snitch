@@ -9,6 +9,8 @@ How does it work?
 This app uses SNMP to query your AirportExtreme for active DHCP Clients and
 returns ther MAC addresses via a web URL.
 
+Most Apple routers have **4 hours** as the default DHCP lease timeout. Depending on the size of your office network. You may want to set the lease timeout to around **10 minutes** to give a much more accurate response.
+
 What's it for?
 --------------
 
