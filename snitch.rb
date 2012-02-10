@@ -9,6 +9,9 @@ class Snitch
     @config = YAML.load_file("snitch.yml")
   end
 
+  # Public: Update the list of clients on the router
+  #
+  # Resets internal client list
   def update_client_list
     client_list.clear
     # Open SNMP connection
@@ -23,6 +26,15 @@ class Snitch
     end
   end
 
+  # Public: Get list of connected client via mac address
+  #
+  # Examples
+  #
+  #   snitch = Snitch.new
+  #   snitch.update_client_list
+  #   snitch.connected_clients.join(",")
+  #
+  # Returns array of connected clients. Update this list via update_client_list
   def connected_clients
     client_list.map do |client|
       config[client]
@@ -31,6 +43,11 @@ class Snitch
 
   private
 
+  # Private: Process an octal client address
+  #
+  # address - single OCTAL client address from the SNMP table
+  #
+  # Returns a converted MAC address for comparison later
   def process_client_address(address)
     mac = []
     # Loop over each byte to a nicer HEX value
