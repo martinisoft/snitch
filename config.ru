@@ -1,6 +1,6 @@
 $: << File.dirname(__FILE__)
 
-require 'snitch'
+require 'lib/snitch'
 require 'renee'
 
 snitch = Snitch.new
@@ -10,7 +10,6 @@ run Renee.core {
 
   path('who') do
     get do
-      @snitch.update_client_list
       halt @snitch.connected_clients.join(",")
     end
   end

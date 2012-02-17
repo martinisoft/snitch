@@ -9,24 +9,8 @@ class Snitch
     @config = YAML.load_file("snitch.yml")
   end
 
-  # Public: Update the list of clients on the router
-  #
-  # Resets internal client list
-  def update_client_list
-    client_list.clear
-    # Open SNMP connection
-    SNMP::Manager.open(host: config['router_name']) do |manager|
-      # Walk the SNMP Table for Net Addresses, see RFC 1213-MIB
-      manager.walk("ipNetToMediaPhysAddress") do |row|
-        # Re-encode and process the OCTET String that comes back
-        addr = process_client_address(row.value.encode.to_s)
-        # Squish them together to form a MAC address
-        client_list << addr.join(":").upcase
-      end
-    end
-  end
-
-  # Public: Get list of connected client via mac address
+  # Public: Get array of connected clients that match
+  #         Side affect of updating the internal client list
   #
   # Examples
   #
@@ -34,14 +18,38 @@ class Snitch
   #   snitch.update_client_list
   #   snitch.connected_clients.join(",")
   #
-  # Returns array of connected clients. Update this list via update_client_list
+  # Returns array of connected clients.
   def connected_clients
+    update_client_list
     client_list.map do |client|
       config[client]
     end.compact.uniq
   end
 
   private
+
+  # Private: Update the list of clients on the router
+  #
+  # Resets internal client list
+  def update_client_list
+    client_list.clear
+    begin
+      # Open SNMP connection
+      SNMP::Manager.open(host: config['router_name']) do |manager|
+        # Walk the SNMP Table for Net Addresses, see RFC 1213-MIB
+        manager.walk("ipNetToMediaPhysAddress") do |row|
+          # Re-encode and process the OCTET String that comes back
+          addr = process_client_address(row.value.encode)
+          # Squish them together to form a MAC address
+          client_list << addr.join(":").upcase
+        end
+      end
+    rescue SocketError => error
+      client_list.clear
+    rescue => error
+      STDERR.puts "Unknown SNMP Error Caught\n#{error.inspect}"
+    end
+  end
 
   # Private: Process an octal client address
   #
