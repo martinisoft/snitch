@@ -3,7 +3,7 @@ Snitch
 
 Mini identity server that queries your router to find out who's in the office
 
-[![Build Status](http://travis-ci.org/martinisoft/snitch.png)](http://travis-ci.org/martinisoft/snitch)
+[![Build Status](https://secure.travis-ci.org/martinisoft/snitch.png?branch=master)](http://travis-ci.org/martinisoft/snitch)
 
 How does it work?
 -----------------
