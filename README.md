@@ -33,12 +33,12 @@ Make a copy of snitch.example.yml and rename it
 cp snitch.example.yml snitch.yml
 ```
 
-Edit the snitch.yml, update router_name and list out the MAC address and
-github/username of each user you want to track.
+Edit the snitch.yml, update router_name and list out the MAC addresses
+(in lowercase) and github/username of each user you want to track.
 
 ```
 router_name: andromeda.local
-"23:98:72:27:2E:88": martinisoft
+"23:98:72:27:2e:88": martinisoft
 ```
 
 _Make sure SNMP is enabled on your AP Extreme/Express_
