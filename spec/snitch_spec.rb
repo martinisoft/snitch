@@ -3,8 +3,9 @@ require 'snitch'
 
 describe Snitch do
   describe "#connected_clients" do
-    let(:row) { double 'row', value: stub(encode: address) }
-    let(:address) { "\x04\x06p\x81\x05\x06\xB5\xE8" }
+    let(:row) { double 'row', value: stub(to_mac: address) }
+    let(:octal) { "\x04\x06p\x81\x05\x06\xB5\xE8" }
+    let(:address) { "70:81:05:06:B5:E8" }
     let(:snitch) { Snitch.new }
 
     before do
