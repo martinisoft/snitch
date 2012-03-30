@@ -15,7 +15,6 @@ class Snitch
   # Examples
   #
   #   snitch = Snitch.new
-  #   snitch.update_client_list
   #   snitch.connected_clients.join(",")
   #
   # Returns array of connected clients.
