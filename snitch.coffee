@@ -1,7 +1,27 @@
 # Snitch adapter, displays people in the office
-# Need snitch? https://github.com/martinisoft/snitch
+# Need snitch?
 #
 # who's in the office - List everyone in the office
+
+# Description:
+#   Talks to snitch to let you know who is in the office
+#
+# Dependencies:
+#   github-credentials
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   hubot who's in the office - Tells you who it sees in the office
+#
+# Notes:
+#   You need to setup a snitch server somewhere first. Get it at
+#   https://github.com/martinisoft/snitch
+#
+# Author:
+#   martinisoft
+
 module.exports = (robot) ->
   robot.respond /who's in the office/i, (msg) ->
     theReply = "Here is who I see:\n"
