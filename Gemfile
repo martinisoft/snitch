@@ -1,11 +1,11 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rake'
 gem 'renee', '~> 0.3.11'
-gem 'snmp', '~> 1.1.0'
+gem 'snmp', '~> 1.2.0'
 
 group :development, :test do
-  gem 'pry', '~> 0.9.8.2'
+  gem 'pry', '~> 0.11.0'
 end
 
 group :test do
