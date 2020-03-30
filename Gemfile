@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'renee', '~> 0.3.11'
+gem 'sinatra', '~> 2.0.8.1'
 gem 'snmp', '~> 1.3.2'
 
 group :development, :test do

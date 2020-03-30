@@ -1,16 +1,12 @@
 $: << File.dirname(__FILE__)
 
 require 'lib/snitch'
-require 'renee'
+require 'sinatra'
 
 snitch = Snitch.new
 
-run Renee.core {
-  @snitch = snitch
+get '/who' do
+  snitch.connected_clients.join(",")
+end
 
-  path('who') do
-    get do
-      halt @snitch.connected_clients.join(",")
-    end
-  end
-}
+run Sinatra::Application
