@@ -40,4 +40,4 @@ DEPENDENCIES
   snmp (~> 1.2.0)
 
 BUNDLED WITH
-   1.15.4
+   2.1.4
