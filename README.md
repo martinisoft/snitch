@@ -8,21 +8,19 @@ Mini identity server that queries your router to find out who's in the office
 Requirements
 ------------
 
-* Ruby 2.0.0 (This app comes with a ruby-version and ruby-gemset just in case)
-* Airport Extreme/Express router that has SNMP Enabled
+* Ruby 2.5.8+ (This app comes with a ruby-version and ruby-gemset just in case)
+* Network router that has SNMP v1/v2 Enabled (SNMPv3 is not supported at this time)
 
 What is it for?
 ---------------
 
-This was mainly built to support the original [play](https://github.com/play/play) app by [Zach Holman](https://github.com/holman) where
-it was used to automatically queue favorite songs based on someone's presence
-in the office.
+This was originally built to support the [play](https://github.com/play/play) app by [Zach Holman](https://github.com/holman) where it was used to automatically queue favorite songs based on someone's presence in the office.
 You can also hook snitch up to your [Hubot](https://github.com/github/hubot) to see who is in the office.
 
 ### How does it work?
 
-This app uses SNMP to query your AirportExtreme for active DHCP Clients and
-returns ther MAC addresses via a web URL.
+This app queries your router via SNMP for active client MAC addresses.
+Any matching MAC addresses are returned as userames (by default these are github username).
 
 ##### Special note about router configuration
 
@@ -72,15 +70,13 @@ It should return a comma-delimited list of usernames, compatible with [play](htt
 Hubot Script (optional)
 -----------------------
 
-Want to teach hubot how to talk to snitch? Load the snitch.coffee module into
-[Hubot](https://github.com/github/hubot). Make sure you also load the
-github-credentials.coffee module from github-scripts, because it matches
-names from there.
+Want to teach hubot how to talk to snitch? Load the snitch.coffee module into [Hubot](https://github.com/github/hubot).
+Make sure you also load the github-credentials.coffee module from github-scripts, because it matches usernames from there.
 
 License and Author
 ------------------
 
-Copyright (C) 2012-2017 Aaron Kalin
+Copyright (C) 2012-2020 Aaron Kalin
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
