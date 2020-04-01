@@ -20,7 +20,7 @@ You can also hook snitch up to your [Hubot](https://github.com/github/hubot) to 
 ### How does it work?
 
 This app queries your router via SNMP for active client MAC addresses.
-Any matching MAC addresses are returned as userames (by default these are github username).
+Any matching MAC addresses are returned as usernames (by default these are github username).
 
 ##### Special note about router configuration
 
@@ -46,12 +46,20 @@ cp snitch.example.yml snitch.yml
 Edit the snitch.yml, update router\_name and list out the MAC addresses
 (in lowercase) and github account/username of each user you want to track.
 
-```
+```yaml
 router_name: hal.local
 "23:98:72:27:2e:88": martinisoft
 ```
 
-_Make sure SNMP is enabled on your AP Extreme/Express_
+If you have more than one device to track a given username, just define that username multiple times with their device MAC address and only one will be returned in the list.
+
+```yaml
+router_name: hal.local
+"23:98:72:27:2E:88": martinisoft
+"44:00:A1:F3:2F:00": martinisoft
+```
+
+_Make sure SNMP is enabled on your router_
 
 Boot the server
 
